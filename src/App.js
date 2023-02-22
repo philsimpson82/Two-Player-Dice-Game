@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { Container, Button, Row, Col } from 'reactstrap';
-import die_face_1 from './assets/img/die_face_1_T.png';
-import die_face_2 from './assets/img/die_face_2_T.png';
-import die_face_3 from './assets/img/die_face_3_T.png';
-import die_face_4 from './assets/img/die_face_4_T.png';
-import die_face_5 from './assets/img/die_face_5_T.png';
-import die_face_6 from './assets/img/die_face_6_T.png';
-import die_face_7 from './assets/img/die_face_7_T.png';
+// import die_face_1 from './assets/img/die_face_1_T.png';
+// import die_face_2 from './assets/img/die_face_2_T.png';
+// import die_face_3 from './assets/img/die_face_3_T.png';
+// import die_face_4 from './assets/img/die_face_4_T.png';
+// import die_face_5 from './assets/img/die_face_5_T.png';
+// import die_face_6 from './assets/img/die_face_6_T.png';
+// import die_face_7 from './assets/img/die_face_7_T.png';
 
 function App() {
   const [newGame, setNewGame] = useState(true);
@@ -15,12 +15,12 @@ function App() {
   const [dice, setDice] = useState(7);
   const [playerOneScore, setPlayerOneScore] = useState(0);
   const [playerTwoScore, setPlayerTwoScore] = useState(0);
-  let [dieFace, setDieFace] = useState(`die_face_7`);
+  let [dieFace, setDieFace] = useState(7);
 
   function rollCalculator () {
     let rollValue = Math.floor((Math.random() * 6) + 1);
     setDice(rollValue);
-    setDieFace(`die_face_${dice}`);
+    setDieFace(rollValue);
     setCurrentScore(currentScore += rollValue);
     console.log(dieFace);
     
@@ -47,6 +47,7 @@ function App() {
     setCurrentScore(0);
     setPlayerOneScore(0);
     setPlayerTwoScore(0);
+    setDieFace(`die_face_7`);
   }
 
   return (
@@ -60,7 +61,7 @@ function App() {
         {`Current Player is Player ${currentPlayer}`}
       </Row>
       <Row className='row-content d-flex justify-content-center'>
-        <img className='img-thumbnail' src={dieFace} alt='die face' />
+        <img className='dice img-thumbnail' src={`../img/die_face_${dieFace}_T.png`} alt='die face' />
         {currentScore}
       </Row>
       <Row className='row-content'>
