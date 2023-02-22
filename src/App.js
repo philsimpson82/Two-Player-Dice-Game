@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { Container, Button, Row, Col } from 'reactstrap';
-// import die_face_1 from './assets/img/die_face_1_T.png';
-// import die_face_2 from './assets/img/die_face_2_T.png';
-// import die_face_3 from './assets/img/die_face_3_T.png';
-// import die_face_4 from './assets/img/die_face_4_T.png';
-// import die_face_5 from './assets/img/die_face_5_T.png';
-// import die_face_6 from './assets/img/die_face_6_T.png';
-// import die_face_7 from './assets/img/die_face_7_T.png';
+import die_face_1 from './assets/img/die_face_1_T.png';
+import die_face_2 from './assets/img/die_face_2_T.png';
+import die_face_3 from './assets/img/die_face_3_T.png';
+import die_face_4 from './assets/img/die_face_4_T.png';
+import die_face_5 from './assets/img/die_face_5_T.png';
+import die_face_6 from './assets/img/die_face_6_T.png';
+import die_face_7 from './assets/img/die_face_7_T.png';
 
 function App() {
   const [newGame, setNewGame] = useState(true);
@@ -15,11 +15,14 @@ function App() {
   const [dice, setDice] = useState(7);
   const [playerOneScore, setPlayerOneScore] = useState(0);
   const [playerTwoScore, setPlayerTwoScore] = useState(0);
+  let [dieFace, setDieFace] = useState(`die_face_7`);
 
   function rollCalculator () {
     let rollValue = Math.floor((Math.random() * 6) + 1);
     setDice(rollValue);
+    setDieFace(`die_face_${dice}`);
     setCurrentScore(currentScore += rollValue);
+    console.log(dieFace);
     
     if (currentScore > 21 ) {
       setCurrentScore(0);
@@ -48,28 +51,42 @@ function App() {
 
   return (
     <Container>
-      <Row className='row-content d-flex align-items-start'>
-        <Col className='text-start' md='6'>Player 1 Score {playerOneScore}</Col>
-        <Col className='text-end' md='6'>Player 2 Score {playerTwoScore}</Col>
+      <Row className='row-content'>
+        <Col className='text-start my-3' md='6'>Player 1 Score {playerOneScore}</Col>
+        <Col className='text-end my-3' md='6'>Player 2 Score {playerTwoScore}</Col>
       </Row>
-      <Row className='row-content d-flex text-end'>Welcome to Dice Roll!</Row>
-      <Row className='row-content d-flex align-items-center justify-content-center'>
-        <img src='die_face_7' alt='die face' />
+      <Row className='row-content d-flex justify-content-center'>
+        <h3 className='text-center'>Welcome to Dice Roll!</h3>
+        {`Current Player is Player ${currentPlayer}`}
+      </Row>
+      <Row className='row-content d-flex justify-content-center'>
+        <img className='img-thumbnail' src={dieFace} alt='die face' />
+        {currentScore}
       </Row>
       <Row className='row-content'>
-        <Col className='d-flex justify-content-start'>
-          <Button color='primary'>
+        <Col className='d-flex justify-content-start my-3'>
+          <Button
+            color='primary'
+            onClick={rollCalculator}
+          >
             Roll Again
           </Button>
         </Col>
-        <Col className='d-flex justify-content-end'>
-          <Button color='secondary'>
+        <Col className='d-flex justify-content-end my-3'>
+          <Button
+            color='secondary'
+            onClick={endTurn}
+          >
             End Turn
           </Button>
         </Col>
       </Row>
       <Row className='d-flex justify-content-center'>
-        <Button className='col-3 btn-lg' color='danger'>
+        <Button
+          className='col-3 btn-lg my-5' 
+          color='danger'
+          onClick={resetGame}
+        >
             Reset Game
           </Button>
         </Row>
