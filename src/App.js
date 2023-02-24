@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Container, Button, Row, Col } from 'reactstrap';
 import './App.css';
+import GameDisplay from './components/GameDisplay';
+import Header from './components/Header';
 
 function App() {
   const [startGame, setStartGame] = useState(false);
@@ -68,21 +70,8 @@ function App() {
 
   return (
     <Container className='feltTable'>
-      <Row className='row-content scoreCard'>
-        <Col className='text-start my-3' md='6'>Player 1 Score: {playerOneScore}</Col>
-        <Col className='text-end my-3' md='6'>Player 2 Score: {playerTwoScore}</Col>
-      </Row>
-      <Row className='row-content m-3 d-flex justify-content-center'>
-        {gameWinner && startGame && <h2 className='text-center'>{`Player ${currentPlayer} WINS!`}</h2>}
-        {!startGame && !gameWinner && <h2 className='text-center'>Welcome to Dice Roll!</h2>}
-        {startGame && !gameWinner && <h2 className='text-center'>{`Player ${currentPlayer} is rolling!`}</h2>}
-      </Row>
-      <Row className='row-content d-flex justify-content-center'>
-        <img className='dice m-5' src={`../img/die_face_${dieFace}_T.png`} alt='die face' />
-      </Row>
-      <Row className='row-content d-flex justify-content-center'>
-        <h4 className='text-center'>Current Score Count: {currentScore}</h4>
-      </Row>
+      <Header playerOneScore={playerOneScore} playerTwoScore={playerTwoScore}/>
+      <GameDisplay startGame={startGame} gameWinner={gameWinner} currentPlayer={currentPlayer} currentScore={currentScore} dieFace={dieFace} />
       <Row className='row-content'>
         <Col className='d-flex justify-content-start my-3'>
           <Button

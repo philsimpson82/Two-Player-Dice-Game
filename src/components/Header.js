@@ -1,13 +1,13 @@
-import { Container, Row, Col } from "reactstrap";
+import { Row, Col } from 'reactstrap';
 
-const Header = (props) => {
+const Header = ({playerOneScore, playerTwoScore}) => {
     return(
-        <Container>
-            <Row>
-                <Col>Player 1 Score {props.playeronescore}</Col>
-                <Col>Player 2 Score {props.playertwoscore}</Col>
+        <>
+            <Row className='justify-content-between'>
+                <Col className='border text-center scoreCard' xs='3'>Player 1 Score: {playerOneScore}</Col>
+                <Col className='border text-center scoreCard' xs='3'>Player 2 Score: {playerTwoScore}</Col>
             </Row>
-        </Container>
+        </>
     );
 };
 
