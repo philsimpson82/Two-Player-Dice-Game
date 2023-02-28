@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Container, Button, Row, Col } from 'reactstrap';
 import './App.css';
+import GameControls from './components/GameControls';
 import GameDisplay from './components/GameDisplay';
 import Header from './components/Header';
 
@@ -72,7 +73,8 @@ function App() {
     <Container className='feltTable'>
       <Header playerOneScore={playerOneScore} playerTwoScore={playerTwoScore}/>
       <GameDisplay startGame={startGame} gameWinner={gameWinner} currentPlayer={currentPlayer} currentScore={currentScore} dieFace={dieFace} />
-      <Row className='row-content'>
+      <GameControls startGame={startGame} rollCalculator={rollCalculator} newGame={newGame} endTurn={endTurn} resetGame={resetGame}/>
+      {/* <Row className='row-content'>
         <Col className='d-flex justify-content-start my-3'>
           <Button
             color='primary'
@@ -93,7 +95,7 @@ function App() {
       <Row className='row-content d-flex justify-content-center'>
         {!startGame && <Button className='col-3 btn-lg my-5' color='success' onClick={newGame}>Start New Game</Button>}
         {startGame && <Button className='col-3 btn-lg my-5' color='danger' onClick={resetGame}>Reset Game</Button>}
-      </Row>
+      </Row> */}
     </Container>
   );
 }
