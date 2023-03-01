@@ -1,11 +1,11 @@
-import { Row, Col, Button } from "reactstrap";
+import { Row, Col, Button, Container } from "reactstrap";
 
 const GameControls = (props) => {
     let controlContent = null;
 
     if (props.startGame) {
         controlContent = (
-            <>
+            <Container>
                 <Row className='row-content'>
                     <Col className='d-flex justify-content-start my-3'>
                         <Button
@@ -24,18 +24,20 @@ const GameControls = (props) => {
                         </Button>
                     </Col>
                 </Row>
-                <Button
-                    className='col-3 btn-lg my-5 d-flex justify-content-center' 
-                    color='danger' 
-                    onClick={props.resetGame}
-                >
-                    Reset Game
-                </Button>
-            </>
+                <Row className='d-flex justify-content-center'>
+                    <Button
+                        className='col-3 btn-lg my-5' 
+                        color='danger' 
+                        onClick={props.resetGame}
+                    >
+                        Reset Game
+                    </Button>
+                </Row>
+            </Container>
         );
     } else {
         controlContent = (
-            <>
+            <Container>
                 <Row className='row-content d-flex justify-content-center'>
                     <Button
                         className='col-3 btn-lg my-5' 
@@ -45,7 +47,7 @@ const GameControls = (props) => {
                         Start New Game
                     </Button>
                 </Row>
-            </>
+            </Container>
         );
     }
 
