@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { Container, Button, Row, Col } from 'reactstrap';
-import './App.css';
+import { Container } from 'reactstrap';
 import GameControls from './components/GameControls';
 import GameDisplay from './components/GameDisplay';
 import Header from './components/Header';
+import './App.css';
 
 function App() {
   const [startGame, setStartGame] = useState(false);
@@ -74,28 +74,6 @@ function App() {
       <Header playerOneScore={playerOneScore} playerTwoScore={playerTwoScore}/>
       <GameDisplay startGame={startGame} gameWinner={gameWinner} currentPlayer={currentPlayer} currentScore={currentScore} dieFace={dieFace} />
       <GameControls startGame={startGame} rollCalculator={rollCalculator} newGame={newGame} endTurn={endTurn} resetGame={resetGame}/>
-      {/* <Row className='row-content'>
-        <Col className='d-flex justify-content-start my-3'>
-          <Button
-            color='primary'
-            onClick={rollCalculator}
-          >
-            Roll Again
-          </Button>
-        </Col>
-        <Col className='d-flex justify-content-end my-3'>
-          <Button
-            color='secondary'
-            onClick={endTurn}
-          >
-            End Turn
-          </Button>
-        </Col>
-      </Row>
-      <Row className='row-content d-flex justify-content-center'>
-        {!startGame && <Button className='col-3 btn-lg my-5' color='success' onClick={newGame}>Start New Game</Button>}
-        {startGame && <Button className='col-3 btn-lg my-5' color='danger' onClick={resetGame}>Reset Game</Button>}
-      </Row> */}
     </Container>
   );
 }

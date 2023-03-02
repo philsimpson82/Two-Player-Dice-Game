@@ -6,17 +6,21 @@ const GameControls = (props) => {
     if (props.startGame) {
         controlContent = (
             <Container>
-                <Row className='row-content'>
-                    <Col className='d-flex justify-content-start my-3'>
+                <Row>
+                    <Col className='d-flex justify-content-center my-3 me-5'>
                         <Button
+                            className='me-5'
+                            size='lg'
                             color='primary'
                             onClick={props.rollCalculator}
                         >
                             Roll Again
                         </Button>
                     </Col>
-                    <Col className='d-flex justify-content-end my-3'>
+                    <Col className='d-flex justify-content-center my-3 ms-5'>
                         <Button
+                            className='ms-5'
+                            size='lg'
                             color='secondary'
                             onClick={props.endTurn}
                         >
@@ -24,28 +28,34 @@ const GameControls = (props) => {
                         </Button>
                     </Col>
                 </Row>
-                <Row className='d-flex justify-content-center'>
+                <Row>
+                    <Col className='d-flex justify-content-center'>
                     <Button
-                        className='col-3 btn-lg my-5' 
+                        className='my-5'
+                        size='lg' 
                         color='danger' 
                         onClick={props.resetGame}
                     >
                         Reset Game
                     </Button>
+                    </Col>
                 </Row>
             </Container>
         );
     } else {
         controlContent = (
             <Container>
-                <Row className='row-content d-flex justify-content-center'>
-                    <Button
-                        className='col-3 btn-lg my-5' 
-                        color='success' 
-                        onClick={props.newGame}
-                    >
-                        Start New Game
-                    </Button>
+                <Row>
+                    <Col className='d-flex justify-content-center'>
+                        <Button
+                            className='my-5'
+                            size='lg' 
+                            color='success' 
+                            onClick={props.newGame}
+                        >
+                            Start New Game
+                        </Button>
+                    </Col>
                 </Row>
             </Container>
         );
@@ -59,5 +69,3 @@ const GameControls = (props) => {
 }
 
 export default GameControls;
-
-// {startGame && <Button className='col-3 btn-lg my-5' color='danger' onClick={resetGame}>Reset Game</Button>}
